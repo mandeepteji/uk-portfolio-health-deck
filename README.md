@@ -1,18 +1,20 @@
-# UK Portfolio Health Deck
+# UK Portfolio Health — GitHub Pages
 
-Static HTML presentation for the **State of the UK Back Book** executive readout.
+| Report | Link |
+|--------|------|
+| **Executive deck** | https://mandeepteji.github.io/uk-portfolio-health-deck/ |
+| **Portfolio health data story** | https://mandeepteji.github.io/uk-portfolio-health-deck/datastory.html |
+| **FFR dashboard** | https://mandeepteji.github.io/uk-portfolio-health-deck/ffr-dashboard.html |
 
-**Live deck:** https://mandeepteji.github.io/uk-portfolio-health-deck/
-
-Navigate with arrow keys, Page Up/Down, or scroll.
+Data story deep-link (orientation section):  
+https://mandeepteji.github.io/uk-portfolio-health-deck/datastory.html#orientation
 
 ## Update
 
-Rebuild from the main project, then copy:
-
 ```bash
 cp ../uk-portfolio-health.html index.html
-git add index.html && git commit -m "Update deck" && git push
+# refresh datastory / ffr-dashboard from source paths as needed
+git add -A && git commit -m "Update reports" && git push
 ```
 
 Pages redeploys in ~1–2 minutes after push.

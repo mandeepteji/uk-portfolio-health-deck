@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>State of the UK Back Book</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;800&family=Montserrat+Light:wght@200;300;400&display=swap" rel="stylesheet">
+<style>:root{--accent:#4A4AFA;--eyebrow:#9DADF9;--muted:#8B8F9C;--text:#000000;--bg:#FFFFFF;--panel:#EFEFEF;--font:'Montserrat',Arial,sans-serif;--tfont:'Montserrat Light','Montserrat',Arial,sans-serif;}
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{height:100%;}
+body{font-family:var(--font);background:#1c1c22;}
+.deck{height:100vh;overflow-y:scroll;scroll-snap-type:y mandatory;scroll-behavior:smooth;}
+.slide{height:100vh;display:flex;align-items:center;justify-content:center;scroll-snap-align:start;}
+.stage{position:relative;width:min(100vw,177.78vh);height:min(56.25vw,100vh);
+  background:var(--bg);container-type:size;overflow:hidden;display:flex;
+  flex-direction:column;justify-content:center;padding:8cqh 5cqw;}
+.stage.top{justify-content:flex-start;}
+.stage.panel{background:var(--panel);}
+/* Affirm TITLE_2 hero: dark indigo radial-gradient (cover, dividers, closing) */
+.stage.dark{background:radial-gradient(135% 125% at 4% 108%,
+  rgba(124,128,232,.55) 0%, rgba(74,74,250,.30) 14%, rgba(33,33,137,.32) 32%,
+  rgba(18,18,31,.97) 60%, #000 100%), #000;color:#fff;}
+.stage.dark .h-cover,.stage.dark .h-section{color:#fff;}
+.stage.dark .subtitle,.stage.dark .subhead,.stage.dark .date{color:#C7CAEC;}
+.eyebrow{font-weight:600;font-size:1.3cqw;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--eyebrow);margin-bottom:1.8cqh;}
+.h-cover{font-family:var(--tfont);font-weight:300;font-size:6.0cqw;line-height:1.06;
+  color:var(--text);max-width:72%;}
+.h-section{font-family:var(--tfont);font-weight:300;font-size:5.2cqw;line-height:1.08;
+  color:var(--text);max-width:82%;}
+.h-content{font-family:var(--tfont);font-weight:300;font-size:3.0cqw;line-height:1.12;
+  color:var(--text);}
+.subhead{font-weight:400;font-size:1.7cqw;color:var(--muted);margin-top:1cqh;}
+.subtitle{font-weight:400;font-size:1.8cqw;color:var(--muted);margin-top:2.4cqh;max-width:68%;}
+.date{position:absolute;left:5cqw;bottom:6cqh;font-size:1.6cqw;color:var(--muted);}
+.bodyfill{flex:1;display:flex;flex-direction:column;justify-content:center;}
+ul.bullets{list-style:none;margin-top:3cqh;}
+ul.bullets>li{font-size:1.9cqw;line-height:1.45;color:var(--text);margin:1.1cqh 0;
+  padding-left:1.8cqw;position:relative;}
+ul.bullets>li::before{content:"\2022";color:var(--accent);position:absolute;left:0;}
+ul.bullets>li.sub{font-size:1.7cqw;color:var(--muted);margin-left:2.4cqw;}
+ul.bullets>li.sub::before{content:"\2013";}
+.cols{display:flex;gap:5cqw;margin-top:3cqh;}
+.col{flex:1;}
+.col-h{font-weight:600;font-size:2.0cqw;color:var(--accent);margin-bottom:1.4cqh;}
+.stat-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;
+  flex:1;gap:1.6cqh;text-align:center;}
+.stat-num{font-family:var(--tfont);font-weight:300;font-size:11cqw;color:var(--accent);line-height:1;}
+.stat-label{font-size:3.0cqw;color:var(--text);}
+.stat-body{font-size:1.8cqw;color:var(--muted);max-width:68%;}
+.grid{display:grid;gap:2.6cqh 3cqw;}
+.cell .v{font-family:var(--tfont);font-weight:200;font-size:5.0cqw;color:var(--accent);line-height:1;}
+.cell .l{font-weight:600;font-size:1.9cqw;color:var(--text);margin-top:0.8cqh;}
+.cell .d{font-size:1.45cqw;color:var(--muted);margin-top:0.3cqh;}
+.quote-q{font-family:var(--tfont);font-weight:300;font-style:italic;font-size:3.8cqw;
+  line-height:1.25;color:var(--text);}
+.quote-a{font-size:2.0cqw;color:var(--muted);margin-top:3cqh;}
+table{border-collapse:collapse;width:100%;margin-top:3cqh;}
+th{background:var(--accent);color:#fff;font-weight:600;font-size:1.4cqw;text-align:left;
+  padding:1.1cqh 1.4cqw;}
+td{font-size:1.5cqw;color:var(--text);padding:1cqh 1.4cqw;border-bottom:0.12cqw solid #D9D9D9;}
+.closing-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;
+  flex:1;text-align:center;}
+.closing-wrap .h-section{max-width:84%;}
+img.full{max-width:100%;max-height:70cqh;object-fit:contain;margin:3cqh auto 0;}
+.caption{font-size:1.45cqw;color:var(--muted);margin-top:1.5cqh;}
+.logo{position:absolute;right:5cqw;bottom:6cqh;height:5.6cqh;}
+.hero{position:absolute;right:0;top:6cqh;height:88cqh;pointer-events:none;}
+.chart-wrap{flex:1;position:relative;margin-top:2cqh;min-height:0;}
+.chart-wrap.tall{height:30cqh;}
+.chart-wrap.mid{height:26cqh;}
+.callout-row{display:flex;gap:2.5cqw;margin-top:2cqh;}
+.callout{flex:1;text-align:center;padding:1.2cqh 1cqw;background:rgba(74,74,250,.06);
+  border-radius:0.8cqh;border:0.1cqw solid #E8E8F4;}
+.callout .v{font-family:var(--tfont);font-weight:300;font-size:3.4cqw;color:var(--accent);line-height:1;}
+.callout .l{font-weight:600;font-size:1.35cqw;margin-top:0.6cqh;}
+.callout .d{font-size:1.2cqw;color:var(--muted);margin-top:0.3cqh;}
+table.compact td,table.compact th{font-size:1.35cqw;padding:0.9cqh 1.2cqw;}
+@media print{
+  body{background:#fff;}
+  .deck{height:auto;overflow:visible;}
+  .slide{height:auto;page-break-after:always;}
+}
+</style>
+</head>
+<body>
+<main class="deck">
+<section class="slide"><div class="stage dark"><div class="eyebrow">UK CREDIT RISK · DATA AS OF 22 JUN 2026</div><h1 class="h-cover">State of the UK Back Book</h1><div class="subtitle">Anchor: DQ4+ 5.8% (£2.0M) · Mechanism: FFR 1→2 ~49% drives DQ30+ build · Entry (FFR 0→1 2.8%) is stabilised</div><div class="date">June 2026</div></div></section>
+<section class="slide"><div class="stage top"><div class="eyebrow">EXECUTIVE SUMMARY</div><h2 class="h-content">We anchor on DQ4+ stock because stress builds in B1 before it fully shows in DQ30+ — and B1 cure is the lever</h2><div class="subhead">Feb FPDQ4 5.3% vs backbook DQ4+ 13.5% (+8.2 pp post-capture) · DQ30+ 3.2% improving WoW but structurally driven by ~49% FFR 1→2</div><div class="bodyfill"><div class="grid" style="grid-template-columns:repeat(3,1fr)"><div class="cell"><div class="v">£34.1M</div><div class="l">Active book</div><div class="d">DQ4+ 5.8% · +2.0 pp vs Dec</div></div><div class="cell"><div class="v">2.8%</div><div class="l">FFR 0→1</div><div class="d">Stabilised — entry not the issue</div></div><div class="cell"><div class="v">49%</div><div class="l">FFR 1→2</div><div class="d">B1 bottleneck · Repeat 61%</div></div><div class="cell"><div class="v">86%</div><div class="l">DQ4 £ Oct–Mar</div><div class="d">Cohort seasoning · not Prime+</div></div><div class="cell"><div class="v">18%</div><div class="l">Near Prime DQ4+</div><div class="d">£903K on 15% of £</div></div><div class="cell"><div class="v">£242K</div><div class="l">May CO</div><div class="d">0.97% monthly · 2× Oct-25</div></div></div></div></div></section>
+<section class="slide"><div class="stage dark"><div class="eyebrow">LENS 1 · STOCK</div><h2 class="h-section">Where the book stands — scale, delinquency stock, and loss economics</h2></div></section>
+<section class="slide"><div class="stage top"><div class="eyebrow">PORTFOLIO SNAPSHOT</div><h2 class="h-content">DQ4+ rose 2.0 pp from the Dec trough to 5.8% (£2.0M) as the book grew 77% — our primary stock anchor</h2><div class="subhead">Takeaway: DQ30+ 3.2% (£1.1M) is the downstream read · ~£900K gap is B1 inventory not yet at 30+ DPD · Near Prime 18% DQ4+ on 15% of £</div><div class="bodyfill"><table class="compact"><thead><tr><th>Metric</th><th>Jun-26</th><th>vs Dec-25 trough</th></tr></thead><tbody><tr><td>Active balance</td><td>£34.1M</td><td>+77%</td></tr><tr><td>DQ4+ stock</td><td>5.8% (£2.0M)</td><td>+2.0 pp</td></tr><tr><td>DQ30+ stock</td><td>3.2% (£1.1M)</td><td>+1.6 pp</td></tr><tr><td>Lifetime NACO</td><td>1.54%</td><td>May CO £242K (0.97%)</td></tr></tbody></table><div class="chart-wrap mid"><canvas id="chart-3"></canvas></div><div class="callout-row"><div class="callout"><div class="v">3.4%</div><div class="l">Prime+ DQ4+</div><div class="d">82% of balance</div></div><div class="callout"><div class="v">18.0%</div><div class="l">Near Prime DQ4+</div><div class="d">£903K inventory</div></div><div class="callout"><div class="v">499K</div><div class="l">Active loans</div><div class="d">12,193 merchants</div></div></div></div></div></section>
+<section class="slide"><div class="stage top"><div class="eyebrow">VINTAGE DECOMPOSITION</div><h2 class="h-content">86% of DQ4 £ sits in Oct–Mar captures — Jan/Feb/Mar drive severity while Apr+ is still immature</h2><div class="subhead">Takeaway: Mar is largest DQ4 £ pocket (28% of delinquent £); Feb highest rate (13.5%) — portfolio plateau masks cohort build</div><div class="bodyfill"><table class="compact"><thead><tr><th>Vintage</th><th>Balance</th><th>DQ4+</th><th>DQ4 £ share</th></tr></thead><tbody><tr><td>Oct-25</td><td>£0.8M</td><td>9.5%</td><td>5%</td></tr><tr><td>Nov-25</td><td>£1.3M</td><td>8.2%</td><td>7%</td></tr><tr><td>Dec-25</td><td>£1.7M</td><td>9.6%</td><td>10%</td></tr><tr><td>Jan-26</td><td>£1.9M</td><td>12.0%</td><td>14%</td></tr><tr><td>Feb-26</td><td>£2.4M</td><td>13.5%</td><td>20%</td></tr><tr><td>Mar-26</td><td>£4.0M</td><td>11.4%</td><td>28%</td></tr><tr><td>Apr-26</td><td>£3.7M</td><td>7.5%</td><td>17%</td></tr></tbody></table><div class="chart-wrap mid"><canvas id="chart-4"></canvas></div><div class="callout-row"><div class="callout"><div class="v">86%</div><div class="l">DQ4 £ in Oct–Mar</div><div class="d">Seasoning cohorts</div></div><div class="callout"><div class="v">13.5%</div><div class="l">Feb-26 peak</div><div class="d">Lowest FPDQ4 vintage</div></div><div class="callout"><div class="v">£4.0M</div><div class="l">Mar-26 book</div><div class="d">Largest forward risk</div></div></div></div></div></section>
+<section class="slide"><div class="stage dark"><div class="eyebrow">LENS 2 · FLOW</div><h2 class="h-section">How delinquency enters and rolls — FFR dynamics and cure rates</h2></div></section>
+<section class="slide"><div class="stage top"><div class="eyebrow">FFR 0→1 · ENTRY RATE</div><h2 class="h-content">FFR 0→1 has stabilised near 2.5–2.8% after the Jan peak — entry is no longer the primary risk</h2><div class="subhead">Takeaway: −76 bps from Jan-19 peak (3.5%) · broad-based improvement across segments · SPI still ~1.7× Non-SPI entry</div><div class="bodyfill"><div class="chart-wrap tall"><canvas id="chart-6"></canvas></div><div class="callout-row"><div class="callout"><div class="v">2.8%</div><div class="l">Latest (Jun-22)</div><div class="d">FFR 0→1 weekly</div></div><div class="callout"><div class="v">−76 bps</div><div class="l">From Jan peak</div><div class="d">3.5% → 2.8%</div></div><div class="callout"><div class="v">3.1% / 1.9%</div><div class="l">SPI / Non-SPI</div><div class="d">Jun avg entry</div></div></div></div></div></section>
+<section class="slide"><div class="stage top"><div class="eyebrow">FFR 1→2 AND DOWNSTREAM CURE</div><h2 class="h-content">FFR 1→2 ~49% is the mechanism that converts DQ4+ stock into DQ30+ — fixing entry alone will not move either metric</h2><div class="subhead">Takeaway: bridge metric between anchor (DQ4+) and serious DQ (DQ30+) · Repeat 61% B1→B2 roll · FFR 3→4 80%+ signals late-stage cure erosion</div><div class="bodyfill"><div class="chart-wrap tall"><canvas id="chart-7"></canvas></div><div class="callout-row"><div class="callout"><div class="v">49%</div><div class="l">FFR 1→2</div><div class="d">Repeat 61% · NTA 47%</div></div><div class="callout"><div class="v">80.5%</div><div class="l">FFR 3→4</div><div class="d">74-week window</div></div><div class="callout"><div class="v">£260K</div><div class="l">B4 pre-CO</div><div class="d">~90% FFR 4→5</div></div></div></div></div></section>
+<section class="slide"><div class="stage top"><div class="eyebrow">SEGMENT CONCENTRATION</div><h2 class="h-content">SPI and Repeat drive disproportionate DQ £ — stock rates and roll diverge from portfolio average</h2><div class="subhead">Takeaway: Repeat 9.0% DQ4+ on 19% of book; SPI 6.6% on 62% — B1 cure weakest on Repeat (61% roll)</div><div class="bodyfill"><table class="compact"><thead><tr><th>Segment</th><th>Balance</th><th>DQ4+</th><th>FFR 0→1</th><th>FFR 1→2</th></tr></thead><tbody><tr><td>UK Overall</td><td>£34.1M</td><td>5.8%</td><td>2.8%</td><td>49%</td></tr><tr><td>NTA</td><td>£27.6M</td><td>5.1%</td><td>2.2%</td><td>47%</td></tr><tr><td>Non-SPI</td><td>£13.1M</td><td>4.5%</td><td>1.9%</td><td>46%</td></tr><tr><td>SPI</td><td>£21.0M</td><td>6.6%</td><td>3.1%</td><td>53%</td></tr><tr><td>Repeat</td><td>£6.6M</td><td>9.0%</td><td>5.0%</td><td>61%</td></tr></tbody></table><div class="chart-wrap mid"><canvas id="chart-8"></canvas></div></div></div></section>
+<section class="slide"><div class="stage top"><div class="eyebrow">ROOT-CAUSE DECOMPOSITION</div><h2 class="h-content">Root-cause decomposition on DQ4+ (£2.0M stock) — excess £ above 5.8% portfolio rate</h2><div class="subhead">Takeaway: DQ4+-anchored sizing · Drivers 1–3 (£1.24M excess) map to B1 cure and vintage levers that precede DQ30+ build</div><div class="bodyfill"><table class="compact"><thead><tr><th>#</th><th>Driver</th><th>£ sizing</th><th>% DQ4 £</th><th>Impact</th><th>Why H / M</th></tr></thead><tbody><tr><td>1</td><td>Q1 2026 vintage seasoning</td><td>£528K excess</td><td>27%</td><td>High</td><td>Jan–Mar £8.3M at 12–11% vs 5.8% avg · vintage comms</td></tr><tr><td>2</td><td>SPI mix &amp; roll rates</td><td>£454K excess</td><td>23%</td><td>High</td><td>2.1pp SPI−Non-SPI gap on £21M · flow + stock</td></tr><tr><td>3</td><td>Repeat deterioration</td><td>£256K excess</td><td>13%</td><td>High</td><td>3.9pp Repeat−NTA gap on £6.6M · weak B1 cure</td></tr><tr><td>4</td><td>Near Prime credit band</td><td>£903K inventory</td><td>46%</td><td>Med</td><td>18% DQ4+ on £5M book · UW/pricing, not excess wedge</td></tr><tr><td>5</td><td>B4 pre-CO pipeline</td><td>£233K fwd CO</td><td>12%</td><td>Med</td><td>£260K B4 × 90% 4→5 · late-stage, small pool</td></tr></tbody></table><div class="callout-row"><div class="callout"><div class="v">£1.24M</div><div class="l">High-impact excess</div><div class="d">Drivers 1–3 · excess vs 5.8%</div></div><div class="callout"><div class="v">63%</div><div class="l">Of DQ4+ £</div><div class="d">Marginal excess attribution¹</div></div><div class="callout"><div class="v">H / Med</div><div class="l">Rating rule</div><div class="d">High = rate-gap excess ≥£200K · Med = gross £ or fwd CO</div></div></div></div></div></section>
+<section class="slide"><div class="stage dark"><div class="eyebrow">LENS 3 · ACTIONS</div><h2 class="h-section">What we recommend — prioritised containment with £ exposure and expected impact</h2></div></section>
+<section class="slide"><div class="stage top"><div class="eyebrow">RECOMMENDATIONS · P0 AND P1</div><h2 class="h-content">We recommend P0 merchant containment and P1 UW tightening — £7.8M stressed back-book vs ~£2.3M/mo forward GMV</h2><div class="subhead">Takeaway: P0 halts accelerating merchant roll; P1 caps uncompensated SPI Repeat NP and 0% sub-760 flow · GMV est. = merchant/segment book share × £10M/mo UK capture × restriction %</div><div class="bodyfill"><table class="compact"><thead><tr><th>Pri</th><th>Action</th><th>Back-book risk</th><th>GMV impact</th><th>6-mo credit £</th></tr></thead><tbody><tr><td>P0</td><td>GADCET UK — suspend</td><td>£3.3M · 23% 0→1 · 35% DQ1+</td><td>−£1.0M/mo</td><td>£200–350K CO</td></tr><tr><td>P0</td><td>PHONESDIRECT — limits</td><td>£4.5M · 13% 0→1 · 30% DQ1+</td><td>−£0.7M/mo</td><td>£150–250K CO</td></tr><tr><td>P1</td><td>SPI Repeat NP UW</td><td>£1.3M · 11% 0→1 · 71% B1→B2</td><td>−£0.1M/mo</td><td>£50–100K CO</td></tr><tr><td>P1</td><td>0% APR sub-760 cap</td><td>£2.8M · 8–19% 0→1 · 0% yield</td><td>−£0.5M/mo</td><td>£250–400K CO</td></tr><tr><td>P1</td><td>SPI &lt;600 B1 digital</td><td>£1.2M in-book · 59% B1→B2</td><td>£0</td><td>£150–300K CO</td></tr></tbody></table><div class="callout-row"><div class="callout"><div class="v">~£2.3M/mo</div><div class="l">Combined GMV</div><div class="d">~£28M/yr capture trade-off</div></div><div class="callout"><div class="v">£7.8M</div><div class="l">P0 back-book</div><div class="d">GADCET + PHONES at risk</div></div><div class="callout"><div class="v">£0.8–1.4M</div><div class="l">6-mo CO benefit</div><div class="d">P0+P1 combined est.</div></div></div></div></div></section>
+<section class="slide"><div class="stage top"><div class="eyebrow">FORWARD MONITOR</div><h2 class="h-content">Weekly vintage DQ4+ and flow roll rates lead book-level DQ — portfolio plateau is not all-clear through Q3</h2><div class="subhead">Apr–May captures (41% of book) season Q3 at current FFR even if headline DQ4+ holds ~5.8%</div><div class="bodyfill"><table class="compact"><thead><tr><th>Indicator</th><th>Latest</th><th>vs benchmark</th><th>Signal</th></tr></thead><tbody><tr><td>Jan-26 vintage DQ4+</td><td>12.0% · rising</td><td>2.1× book (5.8%)</td><td>Highest severity · B1 cure overlay</td></tr><tr><td>Mar-26 vintage DQ4+</td><td>11.4% · £4.0M</td><td>24% of DQ4 £</td><td>B1→B2 roll-forward peaks Jun–Jul</td></tr><tr><td>FFR 1→2 (B1 cure)</td><td>~49%</td><td>Repeat 61% · NTA 47%</td><td>DQ4+ → DQ30+ bridge if flat</td></tr><tr><td>FFR 3→4 (late roll)</td><td>84.9%</td><td>+7.9 pp YoY · window high</td><td>Late-stage cure erosion → CO</td></tr><tr><td>CO run-rate</td><td>£242K · 0.97%/mo</td><td>2× Oct-25 (0.49%)</td><td>Trip-wire if sustained &gt;1.0%</td></tr></tbody></table><div class="callout-row"><div class="callout"><div class="v">5.8%</div><div class="l">Book DQ4+ anchor</div><div class="d">Flat Apr–Jun · vintage still building</div></div><div class="callout"><div class="v">3.2%</div><div class="l">DQ30+ stock</div><div class="d">−0.17 pp WoW · downstream read</div></div><div class="callout"><div class="v">Weekly</div><div class="l">Cadence</div><div class="d">Jan + Mar vintage cuts first</div></div></div></div></div></section>
+<section class="slide"><div class="stage dark"><div class="closing-wrap"><h2 class="h-section">Questions?</h2><div class="subtitle">P0 merchant containment · P1 UW tightening on SPI Repeat + 0% APR sub-760 · Weekly vintage KPI cadence for discussion</div></div></div></section>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script>
+(function(){
+  var deck=document.querySelector('.deck');
+  var slides=[].slice.call(document.querySelectorAll('.slide'));
+  function cur(){var t=deck.scrollTop;var i=Math.round(t/window.innerHeight);
+    return Math.max(0,Math.min(slides.length-1,i));}
+  function go(n){if(slides[n])slides[n].scrollIntoView({behavior:'smooth'});}
+  document.addEventListener('keydown',function(e){
+    if(['ArrowDown','PageDown',' '].indexOf(e.key)>-1){e.preventDefault();go(cur()+1);}
+    else if(['ArrowUp','PageUp'].indexOf(e.key)>-1){e.preventDefault();go(cur()-1);}
+    else if(e.key==='Home'){e.preventDefault();go(0);}
+    else if(e.key==='End'){e.preventDefault();go(slides.length-1);}
+  });
+})();
+</script>
+<script>(function(){var el=document.getElementById('chart-3');if(!el||typeof Chart==='undefined')return;new Chart(el,{type:"line",data:{labels:["Dec-25", "Jan-26", "Feb-26", "Mar-26", "Apr-26", "May-26", "Jun-26"],datasets:[{type:"line",label:"DQ4+ %",data:[3.8, 5.2, 5.4, 5.6, 6.2, 5.8, 5.8],backgroundColor:'transparent',borderColor:"#4A4AFA",borderWidth:2.5,tension:0.25,pointRadius:0,pointHoverRadius:4,borderDash:[]},{type:"line",label:"DQ30+ %",data:[1.6, 2.5, 3.2, 3.4, 3.5, 3.4, 3.2],backgroundColor:'transparent',borderColor:"#212189",borderWidth:2.5,tension:0.25,pointRadius:0,pointHoverRadius:4,borderDash:[6,4]}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{boxWidth:10,font:{size:10}}}},scales:{x:{grid:{display:false},ticks:{maxRotation:0,autoSkip:true,maxTicksLimit:10,font:{size:9}}},y:{ticks:{callback:function(v){return v+'%';}},min:0,max:8}}}});})();(function(){var el=document.getElementById('chart-4');if(!el||typeof Chart==='undefined')return;new Chart(el,{type:"bar",data:{labels:["Oct-25", "Nov-25", "Dec-25", "Jan-26", "Feb-26", "Mar-26", "Apr-26"],datasets:[{type:"bar",label:"Vintage DQ4+ %",data:[9.5, 8.2, 9.6, 12.0, 13.5, 11.4, 7.5],backgroundColor:"#4A4AFA",borderColor:"#4A4AFA",borderWidth:2.5,tension:0.25,pointRadius:0,pointHoverRadius:4,borderDash:[]},{type:"line",label:"Portfolio DQ4+ (5.8%)",data:[5.8, 5.8, 5.8, 5.8, 5.8, 5.8, 5.8],backgroundColor:'transparent',borderColor:"#8B8F9C",borderWidth:2.5,tension:0.25,pointRadius:0,pointHoverRadius:4,borderDash:[6,4]}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{boxWidth:10,font:{size:10}}}},scales:{x:{grid:{display:false},ticks:{maxRotation:0,autoSkip:true,maxTicksLimit:10,font:{size:9}}},y:{ticks:{callback:function(v){return v+'%';}},min:0,max:16}}}});})();(function(){var el=document.getElementById('chart-6');if(!el||typeof Chart==='undefined')return;new Chart(el,{type:"line",data:{labels:["Jan-5", "Jan-12", "Jan-19", "Jan-26", "Feb-2", "Feb-9", "Feb-16", "Feb-23", "Mar-2", "Mar-9", "Mar-16", "Mar-23", "Mar-30", "Apr-6", "Apr-13", "Apr-20", "Apr-27", "May-4", "May-11", "May-18", "May-25", "Jun-1", "Jun-8", "Jun-15", "Jun-22"],datasets:[{type:"line",label:"UK Overall FFR 0\u21921",data:[3.3, 3.45, 3.51, 3.36, 2.83, 2.72, 2.77, 2.63, 2.59, 2.84, 2.78, 2.59, 2.68, 2.51, 2.62, 2.71, 2.74, 2.88, 2.83, 2.84, 2.85, 2.59, 2.48, 2.61, 2.75],backgroundColor:'transparent',borderColor:"#4A4AFA",borderWidth:2.5,tension:0.25,pointRadius:0,pointHoverRadius:4,borderDash:[]}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{boxWidth:10,font:{size:10}}}},scales:{x:{grid:{display:false},ticks:{maxRotation:0,autoSkip:true,maxTicksLimit:10,font:{size:9}}},y:{ticks:{callback:function(v){return v+'%';}},min:2,max:4}}}});})();(function(){var el=document.getElementById('chart-7');if(!el||typeof Chart==='undefined')return;new Chart(el,{type:"line",data:{labels:["Jan-5", "Jan-12", "Jan-19", "Jan-26", "Feb-2", "Feb-9", "Feb-16", "Feb-23", "Mar-2", "Mar-9", "Mar-16", "Mar-23", "Mar-30", "Apr-6", "Apr-13", "Apr-20", "Apr-27", "May-4", "May-11", "May-18", "May-25", "Jun-1", "Jun-8", "Jun-15", "Jun-22"],datasets:[{type:"line",label:"FFR 1\u21922 (B1 roll)",data:[56.0, 52.0, 54.0, 51.8, 49.5, 48.8, 49.9, 52.0, 54.1, 52.0, 48.5, 47.0, 53.1, 51.1, 46.9, 49.7, 49.4, 48.6, 48.5, 49.0, 51.2, 54.5, 51.6, 49.0, 48.7],backgroundColor:'transparent',borderColor:"#4A4AFA",borderWidth:2.5,tension:0.25,pointRadius:0,pointHoverRadius:4,borderDash:[]},{type:"line",label:"FFR 3\u21924 (late roll)",data:[76.1, 79.2, 81.2, 85.7, 88.5, 80.7, 80.1, 81.9, 85.2, 84.8, 84.1, 85.2, 88.0, 88.5, 88.8, 87.9, 88.6, 89.6, 90.0, 88.8, 87.4, 85.7, 84.3, 82.0, 80.5],backgroundColor:'transparent',borderColor:"#212189",borderWidth:2.5,tension:0.25,pointRadius:0,pointHoverRadius:4,borderDash:[6,4]}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{boxWidth:10,font:{size:10}}}},scales:{x:{grid:{display:false},ticks:{maxRotation:0,autoSkip:true,maxTicksLimit:10,font:{size:9}}},y:{ticks:{callback:function(v){return v+'%';}},min:40,max:95}}}});})();(function(){var el=document.getElementById('chart-8');if(!el||typeof Chart==='undefined')return;new Chart(el,{type:"bar",data:{labels:["Portfolio", "NTA", "Non-SPI", "SPI", "Repeat"],datasets:[{type:"bar",label:"DQ4+ stock %",data:[5.8, 5.1, 4.5, 6.6, 9.0],backgroundColor:"#4A4AFA",borderColor:"#4A4AFA",borderWidth:2.5,tension:0.25,pointRadius:0,pointHoverRadius:4,borderDash:[]}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{boxWidth:10,font:{size:10}}}},scales:{x:{grid:{display:false},ticks:{maxRotation:0,autoSkip:true,maxTicksLimit:10,font:{size:9}}},y:{ticks:{callback:function(v){return v+'%';}},min:0,max:11}}}});})();</script>
+</body>
+</html>

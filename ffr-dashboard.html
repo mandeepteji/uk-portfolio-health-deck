@@ -305,14 +305,14 @@
   <div class="canon-bar" id="canon-fb">
     <h4>Data Story canonical — frontbook summary (matured cohort · ex fraud)</h4>
     <div class="canon-grid" id="canon-fb-grid"></div>
-    <p class="canon-note">Matured cohort from <code>credit_first_pmt_dq</code> (Data Story). Vintage / weekly panels below use <code>CREDIT_UK_MOB_DQ4/DQ30_VINTAGE</code> — definitions differ; both are maintained as UK monitoring sources. <a href="file:///Users/mandeepkumar.teji/Downloads/affirm-builders-main/UK_Portfolio_Health_DataStory.html#frontbook">Data Story frontbook</a></p>
+    <p class="canon-note">Matured cohort from <code>credit_first_pmt_dq</code> (Data Story). <strong>Weekly Origination Cohorts</strong> below = same <code>RAW_FPDQ</code> series as Data Story <a href="https://mandeepteji.github.io/uk-portfolio-health-deck/datastory.html#fpdq-weekly-wow">capture-week WoW</a>. MOB vintage panels further down use <code>CREDIT_UK_MOB_DQ4/DQ30_VINTAGE</code> (cumulative by origination month).</p>
   </div>
 
   <!-- ── FPDQ Weekly Trend ─────────────────────────────────────────── -->
   <div class="stitle">First Payment DQ — Weekly Trend <span class="badge green">ACTUAL · WEEKLY COHORTS</span></div>
   <div class="note" style="margin-bottom:10px">ℹ️ Each point = origination cohort for that week, measured at day 5 (FPDQ4+) and day 30 (FPDQ30+) after first payment due. FPDQ30 shows null for cohorts not yet 30-day mature.</div>
   <div class="g2">
-    <div class="cc" style="grid-column:1/-1"><h3>FPDQ4+ and FPDQ30+ — Weekly Origination Cohorts</h3><p>% ever 4d+ overdue (blue) and % overdue at 30 days (orange) per origination week</p><div class="cw" style="height:260px"><canvas id="fpdq-overall"></canvas></div></div>
+    <div class="cc" id="fpdq-weekly-cohorts" style="grid-column:1/-1"><h3>FPDQ4+ and FPDQ30+ — Weekly Origination Cohorts</h3><p>% ever 4d+ overdue (blue) and % overdue at 30 days (orange) per mature capture week (Sun–Sat) — reconciles with <a href="https://mandeepteji.github.io/uk-portfolio-health-deck/datastory.html#fpdq-weekly-wow">Data Story WoW chart</a></p><div class="cw" style="height:260px"><canvas id="fpdq-overall"></canvas></div></div>
   </div>
   <div class="g2" style="margin-top:12px">
     <div class="cc"><h3>FPDQ4+ by Credit Mix</h3><p>Weekly trend by Delphi score tier</p><div class="cw" style="height:230px"><canvas id="fpdq-cm4"></canvas></div></div>
@@ -10450,7 +10450,7 @@ function setHTML(id,v){const e=document.getElementById(id);if(e)e.innerHTML=v;}
 // Maintained alongside this dashboard: Data Story = exec summary; dashboard = drill-down.
 const PORTFOLIO_HEALTH_CANON={
   as_of:'2026-06-28',
-  refresh:29,
+  refresh:31,
   backbook:{
     active_bal_m:34.8, loans:515692, dq4_pct:5.74, dq30_pct:3.24,
     ffr01_jun:2.61, ffr12_jun:50.37, ffr45_jun:89.82, b1_cure_pct:49.6,

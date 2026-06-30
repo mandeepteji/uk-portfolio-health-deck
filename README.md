@@ -3,6 +3,7 @@
 | Report | Link |
 |--------|------|
 | **Executive deck** | https://mandeepteji.github.io/uk-portfolio-health-deck/ |
+| **Credit quality & SPI deck** | https://mandeepteji.github.io/uk-portfolio-health-deck/credit-quality-spi.html |
 | **Portfolio health data story** | https://mandeepteji.github.io/uk-portfolio-health-deck/datastory.html |
 | **FFR dashboard** | https://mandeepteji.github.io/uk-portfolio-health-deck/ffr-dashboard.html |
 
@@ -13,6 +14,7 @@ https://mandeepteji.github.io/uk-portfolio-health-deck/datastory.html#orientatio
 
 ```bash
 cp ../uk-portfolio-health.html index.html
+cp ../uk-credit-quality-spi.html credit-quality-spi.html
 # refresh datastory / ffr-dashboard from source paths as needed
 git add -A && git commit -m "Update reports" && git push
 ```
